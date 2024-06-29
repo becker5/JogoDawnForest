@@ -440,6 +440,7 @@ vframes = 11
 script = ExtResource( 3 )
 animation_player = NodePath("../Animation")
 player = NodePath("..")
+attack_collision = NodePath("../AttackArea/Collision")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -481,6 +482,7 @@ cast_to = Vector2( 5.5, 0 )
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource( 4 )
+player = NodePath("..")
 
 [node name="Light" type="Light2D" parent="."]
 texture = ExtResource( 5 )

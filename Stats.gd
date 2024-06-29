@@ -20,7 +20,7 @@ var current_mana:int
 var current_xp:int = 0
 var current_health:int
 var level:int = 1
-
+export(NodePath) onready var player = get_node(player) as KinematicBody2D
 var level_dict:Dictionary = {
 	"1":25,
 	"2":30, 
@@ -59,7 +59,12 @@ func update_health(type:String, value:int)->void:
 		'Decrease':
 			verify_shield(value)
 			if current_health <= 0:
-				pass
+				player.dead = true 
+			else:
+				player.on_hit = true
+				player.attacking = false
+				
+				pass #chamar animação de hit
 
 func verify_shield(value:int)->void:
 	if shielding:

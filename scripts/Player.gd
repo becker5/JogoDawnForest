@@ -3,7 +3,7 @@ extends KinematicBody2D
 class_name Player
 
 onready var  wall_ray: RayCast2D = get_node("WallRay")
-
+onready var stats:Node = get_node("Stats")
 onready var player_sprite: Sprite = get_node("Sprite")
 var velocity: Vector2 # Vetor 2D para mover o personagem
 var direction:int = 1
@@ -28,6 +28,8 @@ var crouching:bool = false
 var can_track_input:bool = false
 var on_wall:bool = false
 var not_on_wall:bool = true
+var dead:bool = false
+var on_hit: = false
 
 # game loop
 func _physics_process(delta):
@@ -52,11 +54,15 @@ func attack()-> void:
 func crouch()-> void:
 	if Input.is_action_pressed("ui_crouch") and is_on_floor() and not defending:
 		crouching = true
+		stats.shielding = false
+		
 		can_track_input = false
+		stats.shielding = false
 		defending = false
 	elif not defending:
 		crouching = false
 		can_track_input = true
+		stats.shielding = false
 		player_sprite.crouch_off = true
 		
 func defense()->void:

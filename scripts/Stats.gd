@@ -23,6 +23,7 @@ var max_mana:int
 
 var current_xp:int = 0
 var level:int = 1
+export(NodePath) onready var player = get_node(player)as KinematicBody2D
 
 var level_dict:Dictionary = {
 	"1":25,
